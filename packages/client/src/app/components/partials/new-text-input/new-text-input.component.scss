@@ -1,0 +1,94 @@
+.input {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    padding-top: 10px;
+
+    & + .input {
+      margin-top: 2rem;
+    }
+
+  .input-label {
+    color: var(--label-color);
+    position: absolute;
+    transition: all 0.3s;
+    font-size: 1.2rem;
+    font-weight: 500;
+    top: 12px;
+
+    &--required {
+      &::after {
+        content: '*';
+        color: red;
+        margin-left: 0.2rem;
+      }
+    }
+  }
+
+  .input-field {
+    border: none;
+    padding: 0;
+    z-index: 1;
+    background-color: transparent;
+    border-bottom: 2px solid #eee;
+    font-size: .9rem;
+    line-height: 30px;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .input-field:focus,
+  .input-field:valid {
+    outline: 0;
+    border-bottom-color: var(--focus-color);
+  }
+
+  .input-field:focus + .input-label,
+  .input-field:valid + .input-label {
+    color: black;
+    transform: translateY(-25px);
+  }
+
+  .input-error {
+    position: absolute;
+    font-size: .8rem;
+    top: 2.5rem;
+    color: red;
+    font-weight: 500;
+  }
+
+  fa-icon {
+    position: absolute;
+    right: 0;
+    bottom: .2rem;
+    z-index: 2;
+    font-size: 1.2rem;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .input {
+    .input-label {
+      top: 5px;
+    }
+
+    .input-error {
+      bottom: .1rem;
+    }
+
+    fa-icon {
+      bottom: 0;
+    }
+
+    .input-error {
+      font-size: .7rem;
+      top: 2.2rem;
+    }
+  }
+}

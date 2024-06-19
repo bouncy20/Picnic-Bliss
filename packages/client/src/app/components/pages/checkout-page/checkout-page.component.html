@@ -1,0 +1,40 @@
+<div class="checkout-page">
+  <app-title title="Order Details" fontSize="1.6rem"></app-title>
+
+  <h2 class="checkout-page__section-header first">Delivery info</h2>
+  <div class="content">
+    <section class="content__form-section">
+      <form [formGroup]="checkoutForm">
+        <app-new-text-input
+          type="text"
+          [control]="nameFormControl"
+          label="Name"
+        ></app-new-text-input>
+        <app-new-text-input
+          type="text"
+          [control]="addressFormControl"
+          label="Address"
+        ></app-new-text-input>
+      </form>
+    </section>
+
+    <section class="content__map-section">
+      <h2 class="checkout-page__section-header">Select your address</h2>
+      <app-map [order]="order"></app-map>
+    </section>
+
+    <section class="content__order-section">
+      <h2 class="checkout-page__section-header">Order items</h2>
+      <app-order-items-list [order]="order"></app-order-items-list>
+    </section>
+  </div>
+
+  <div class="button-container">
+    <app-default-button
+      text="Proceed to payment"
+      [fontSizeRem]="1.5"
+      (click)="createOrder()"
+      width="100%"
+    ></app-default-button>
+  </div>
+</div>

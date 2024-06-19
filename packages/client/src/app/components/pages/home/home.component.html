@@ -1,0 +1,55 @@
+<div class="home">
+  <section class="hero">
+    <div class="hero__inner-container">
+      <app-search-bar></app-search-bar>
+      <app-tags></app-tags>
+      <app-not-found
+        [visible]="!foods || !foods.length"
+        message="No foods found!"
+        resetLinkText="Try searching for something else"
+      ></app-not-found>
+    </div>
+  </section>
+  <ul *ngIf="foods && foods.length" class="home__food-cards">
+    <li *ngFor="let food of foods" class="home__card">
+      <a routerLink="/food/{{ food.id }}">
+        <img [src]="food.imageUrl" [alt]="food.name" />
+        <section class="content">
+          <div class="content__header">
+            <p class="content__food-name">
+              {{ food.name }}
+            </p>
+            <span
+              class="content__heart-icon"
+              [ngClass]="{ 'content__heart-icon--favorite': food.isFavorite }"
+            >❤</span>
+          </div>
+
+          <div class="content__stars-and-time">
+            <app-star-rating [stars]="food.stars"></app-star-rating>
+            <div class="content__cooking-time">
+              <span>🕒</span>
+              {{ food.cookingTime }} min
+            </div>
+          </div>
+
+          <div class="content__origins">
+            <span *ngFor="let origin of food.origins">
+              {{ origin }}
+            </span>
+          </div>
+
+          <p class="content__price">
+            {{ food.price | currency }}
+          </p>
+        </section>
+      </a>
+    </li>
+  </ul>
+
+  <section class="faq">
+    <div class="faq__container">
+      <app-faq></app-faq>
+    </div>
+  </section>
+</div>

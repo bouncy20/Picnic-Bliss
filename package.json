@@ -1,0 +1,25 @@
+{
+  "name": "Picnic Bliss",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=18 <19"
+  },
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "cd packages/client && npm start & cd packages/server && npm start",
+    "start": "cd packages/server/built && node server.js",
+    "prebuild": "cd packages/server && npm run build",
+    "build": "cd packages/client && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": ""
+}

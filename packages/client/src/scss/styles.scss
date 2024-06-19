@@ -1,0 +1,58 @@
+@import 'normalize.css';
+
+:root {
+  --primary-color: #af1313;
+  --vibrant-red: #e72727;
+  --default-white: #fff;
+  --light-grey: #f7f7f7;
+  --black: #1A1919;
+  --light-black: #333;
+  --darker-grey: #f1f1f1;
+  --table-border-color: #ffbbbb;
+  --table-light-grey: #e4e4e4;
+  --default-box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+/* RESET AND DEFAULT STYLES */
+p, a, ul, li, h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+ul, li {
+  list-style-type: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* BASE MOBILE SIZE STYLES */
+html {
+  line-height: 1.5;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+/* TABLET SIZE STYLES */
+@media only screen and (min-width: 620px) {
+  html {
+    font-size: 18px;
+  }
+}
+
+/* DESKTOP SIZE STYLES */
+@media only screen and (min-width: 1200px) {
+  html {
+    font-size: 20px;
+  }
+}

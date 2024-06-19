@@ -1,0 +1,86 @@
+<div class="profile-page">
+<app-title title="Profile"></app-title>
+
+<div class="content">
+  <section class="profile content__section">
+    <div class="profile__user-background">
+      <fa-icon [icon]="faUser" alt="User profile icon"></fa-icon>
+    </div>
+
+    <div class="profile__name-email">
+      <h2>Welcome, {{ user.name }}</h2>
+      <div>
+        <fa-icon class="email" [icon]="faEnvelope"></fa-icon><span>{{ user.email }}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TODO: Make the address section actually useful -->
+  <!-- <section class="section-card address-section">
+    <app-address-form></app-address-form>
+  </section> -->
+
+  <h2 class="content__section-header">
+    <fa-icon class="cart" [icon]="faCartShopping" alt="Shopping cart"></fa-icon><span>Last order</span>
+  </h2>
+  <section class="last-order content__section">
+    <ng-container *ngIf="lastOrder; else noOrders">
+      <div class="last-order__header">
+        <time datetime="lastOrder.createdAt">
+          {{ lastOrder.createdAt | date: 'short' }}
+        </time>
+        <span>{{ lastOrder.status }}</span>
+      </div>
+
+      <div class="last-order__item-container">
+        <div *ngFor="let item of lastOrder.items">
+          <span>{{ item.food.name }}</span>
+          <span>x {{ item.quantity }}</span>
+        </div>
+      </div>
+
+      <div class="last-order__total-price">
+        <span>{{ lastOrder.totalPrice | currency }}</span>
+      </div>
+
+      <div class="last-order__button-container">
+        <button routerLink="/orders">See all orders</button>
+      </div>
+    </ng-container>
+
+    <ng-template #noOrders>
+      <div class="content__no-content">
+        <span>You have no orders yet</span>
+      </div>
+    </ng-template>
+  </section>
+
+  <h2 class="content__section-header">
+    <fa-icon class="cart" [icon]="faHeart" alt="Heart"></fa-icon><span>Favorites</span>
+  </h2>
+  <section class="favorites content__section">
+    <ng-container *ngIf="favoriteFoods.length; else noFavorites">
+      <div *ngFor="let food of favoriteFoods" class="favorites__grid-container">
+        <div class="favorites__grid-item">
+          <img [src]="food.imageUrl">
+        </div>
+        <div class="favorites__grid-item">
+          {{ food.name }}
+        </div>
+        <div class="favorites__grid-item">
+          {{ food.origins | arraySpace }}
+        </div>
+        <div class="favorites__grid-item">
+          {{ food.price | currency }}
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #noFavorites>
+      <div class="content__no-content">
+        <span>You have no favorites yet</span>
+      </div>
+    </ng-template>
+  </section>
+</div>
+</div>

@@ -1,0 +1,15 @@
+<div class="input">
+  <input
+    [type]="type"
+    [formControl]="control"
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    class="input-field"
+    required
+  />
+  <label class="input-label" [class.input-label--required]="displayAsterisk">{{ label }}</label>
+
+  <small class="input-error" *ngIf="control.touched">{{ errorToBeDisplayed }}</small>
+  <fa-icon [icon]="faEyeSlash" *ngIf="displayEye && type === 'password'" (click)="onEyeIconClick()"></fa-icon>
+  <fa-icon [icon]="faEye" *ngIf="displayEye && type === 'text'" (click)="onEyeIconClick()"></fa-icon>
+</div>
