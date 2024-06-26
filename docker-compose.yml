@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  api-backend:
+    image: jackquick/backend
+    container_name: api-backend
+    networks:
+      - my-network
+    ports:
+      - "5000:5000"
+    dns:
+      - 8.8.8.8
+
+  angular-app:
+    image: jackquick/picnicbliss
+    container_name: angular-app
+    networks:
+      - my-network
+    ports:
+      - "4200:4200"
+    dns:
+      - 8.8.8.8
+
+networks:
+  my-network:
+    driver: bridge
